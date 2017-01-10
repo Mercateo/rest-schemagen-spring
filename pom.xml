@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mercateo</groupId>
@@ -26,6 +27,19 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
+    <developers>
+        <developer>
+            <id>andreas_wuerl</id>
+            <name>Andreas Würl</name>
+            <email>andreas.wuerl@mercateo.com</email>
+            <url>http://www.mercateo.com</url>
+            <organization>Mercateo AG</organization>
+            <organizationUrl>http://www.mercateo.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
     <licenses>
         <license>
             <name>ASL2</name>
@@ -36,8 +50,8 @@
         <connection>scm:git:git@github.com:Mercateo/rest-schemagen-spring.git</connection>
         <developerConnection>scm:git:git@github.com:Mercateo/rest-schemagen-spring.git</developerConnection>
         <url>https://github.com/Mercateo/rest-schemagen-spring.git</url>
-      <tag>rest-schemagen-spring-0.1.0</tag>
-  </scm>
+        <tag>rest-schemagen-spring-0.1.0</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -154,5 +168,5 @@
             </build>
         </profile>
     </profiles>
-    
+
 </project>
