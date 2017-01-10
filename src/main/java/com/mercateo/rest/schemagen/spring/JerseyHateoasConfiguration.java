@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.mercateo.common.rest.schemagen.types.ListResponseBuilderCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -58,6 +59,11 @@ public class JerseyHateoasConfiguration {
     @Bean
     PaginatedResponseBuilderCreator paginatedResponseBuilderCreator() {
         return new PaginatedResponseBuilderCreator();
+    }
+
+    @Bean
+    public ListResponseBuilderCreator listResponseBuilderCreator() {
+        return new ListResponseBuilderCreator();
     }
 
     @Bean
