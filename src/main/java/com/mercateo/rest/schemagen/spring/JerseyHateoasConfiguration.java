@@ -101,7 +101,10 @@ public class JerseyHateoasConfiguration {
         Enumeration<String> headerNames = httpServletRequest.getHeaderNames();
 
         for (String headerName : Collections.list(headerNames)) {
-            requestHeaders.computeIfAbsent(headerName, ignored -> new ArrayList<String>()).add(headerName);
+            final Enumeration<String> headers = httpServletRequest.getHeaders(headerName);
+            for (String header : Collections.list(headers)) {
+                requestHeaders.computeIfAbsent(headerName, ignored -> new ArrayList<>()).add(header);
+            }
         }
 
         return requestHeaders;
