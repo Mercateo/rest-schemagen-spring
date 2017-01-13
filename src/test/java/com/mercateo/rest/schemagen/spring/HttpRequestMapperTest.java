@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +24,6 @@ public class HttpRequestMapperTest {
 
     @Test
     public void shouldCreateRequestHeaders() throws Exception {
-
         when(request.getHeaderNames()).thenReturn(enumerate("foo", "bar"));
         when(request.getHeaders("foo")).thenReturn(enumerate("baz", "qux"));
         when(request.getHeaders("bar")).thenReturn(enumerate("quux"));
@@ -34,6 +34,15 @@ public class HttpRequestMapperTest {
                 .hasSize(2)
                 .containsEntry("foo", Arrays.asList("baz", "qux"))
                 .containsEntry("bar", Collections.singletonList("quux"));
+    }
+
+    @Test
+    public void name() throws Exception {
+        when(request.getRequestURL()).thenReturn(new StringBuffer("http://user:pass@host:8080/foo/bar"));
+        when(request.getServletPath()).thenReturn("/api");
+        final String defaultBaseUri = mapper.getDefaultBaseUri(request).toString();
+
+        assertThat(defaultBaseUri).isEqualTo("http://user:pass@host:8080/api");
     }
 
     @SafeVarargs

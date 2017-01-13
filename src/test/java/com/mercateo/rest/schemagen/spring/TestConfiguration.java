@@ -5,6 +5,7 @@ import com.mercateo.common.rest.schemagen.plugin.MethodCheckerForLink;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 
 import static org.mockito.Mockito.mock;
 
