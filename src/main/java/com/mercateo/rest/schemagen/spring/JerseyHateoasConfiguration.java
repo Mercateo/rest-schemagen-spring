@@ -33,12 +33,6 @@ import com.mercateo.common.rest.schemagen.types.PaginatedResponseBuilderCreator;
 @Configuration
 public class JerseyHateoasConfiguration {
 
-    private final HttpRequestMapper httpRequestMapper;
-
-    JerseyHateoasConfiguration() {
-        httpRequestMapper = new HttpRequestMapper();
-    }
-
     @Bean
     JsonSchemaGenerator jsonSchemaGenerator() {
         return new RestJsonSchemaGenerator();
@@ -77,6 +71,11 @@ public class JerseyHateoasConfiguration {
     }
 
     @Bean
+    HttpRequestMapper httpRequestMapper() {
+        return new HttpRequestMapper();
+    }
+
+    @Bean
     @Scope(value = "request")
     HttpServletRequest httpServletRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
@@ -86,8 +85,9 @@ public class JerseyHateoasConfiguration {
     @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
     LinkFactoryContext linkFactoryContext(HttpServletRequest httpServletRequest, BaseUriCreator baseUriCreator,
             FieldCheckerForSchema fieldCheckerForSchema, MethodCheckerForLink methodCheckerForLink,
-            @Named("requestHeaders") Map<String, List<String>> requestHeaders) throws URISyntaxException {
-        URI defaultBaseUri = new URI(httpServletRequest.getRequestURL().toString());
+            @Named("requestHeaders") Map<String, List<String>> requestHeaders, HttpRequestMapper httpRequestMapper)
+            throws URISyntaxException {
+        URI defaultBaseUri = httpRequestMapper.getDefaultBaseUri(httpServletRequest);
         URI baseUri = baseUriCreator.createBaseUri(defaultBaseUri, requestHeaders);
 
         return new LinkFactoryContextDefault(baseUri, methodCheckerForLink, fieldCheckerForSchema);
@@ -96,7 +96,7 @@ public class JerseyHateoasConfiguration {
     @Bean
     @Named("requestHeaders")
     @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-    Map<String, List<String>> requestHeaders(HttpServletRequest httpServletRequest) {
+    Map<String, List<String>> requestHeaders(HttpServletRequest httpServletRequest, HttpRequestMapper httpRequestMapper) {
         return httpRequestMapper.requestHeaders(httpServletRequest);
     }
 
