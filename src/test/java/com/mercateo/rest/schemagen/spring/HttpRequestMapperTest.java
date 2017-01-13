@@ -1,17 +1,22 @@
 package com.mercateo.rest.schemagen.spring;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
-import java.util.*;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HttpRequestMapperTest {
@@ -30,10 +35,8 @@ public class HttpRequestMapperTest {
 
         final Map<String, List<String>> headers = mapper.requestHeaders(request);
 
-        assertThat(headers)
-                .hasSize(2)
-                .containsEntry("foo", Arrays.asList("baz", "qux"))
-                .containsEntry("bar", Collections.singletonList("quux"));
+        assertThat(headers).hasSize(2).containsEntry("foo", Arrays.asList("baz", "qux")).containsEntry("bar",
+                Collections.singletonList("quux"));
     }
 
     @Test

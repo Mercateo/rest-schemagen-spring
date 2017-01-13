@@ -1,13 +1,13 @@
 package com.mercateo.rest.schemagen.spring;
 
-import com.mercateo.common.rest.schemagen.plugin.FieldCheckerForSchema;
-import com.mercateo.common.rest.schemagen.plugin.MethodCheckerForLink;
+import static org.mockito.Mockito.mock;
+
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Primary;
 
-import static org.mockito.Mockito.mock;
+import com.mercateo.common.rest.schemagen.plugin.FieldCheckerForSchema;
+import com.mercateo.common.rest.schemagen.plugin.MethodCheckerForLink;
 
 @Configurable
 @Import(JerseyHateoasConfiguration.class)

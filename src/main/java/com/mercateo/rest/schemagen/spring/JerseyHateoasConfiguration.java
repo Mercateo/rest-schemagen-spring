@@ -96,7 +96,8 @@ public class JerseyHateoasConfiguration {
     @Bean
     @Named("requestHeaders")
     @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-    Map<String, List<String>> requestHeaders(HttpServletRequest httpServletRequest, HttpRequestMapper httpRequestMapper) {
+    Map<String, List<String>> requestHeaders(HttpServletRequest httpServletRequest,
+            HttpRequestMapper httpRequestMapper) {
         return httpRequestMapper.requestHeaders(httpServletRequest);
     }
 

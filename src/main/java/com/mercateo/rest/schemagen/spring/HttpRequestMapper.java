@@ -1,8 +1,5 @@
 package com.mercateo.rest.schemagen.spring;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collections;
@@ -28,7 +25,7 @@ class HttpRequestMapper {
 
     URI getDefaultBaseUri(HttpServletRequest request) throws URISyntaxException {
         final URI uri = new URI(request.getRequestURL().toString());
-        return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(), request
-                .getServletPath(), null, null);
+        return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(), request.getServletPath(), null,
+                null);
     }
 }
