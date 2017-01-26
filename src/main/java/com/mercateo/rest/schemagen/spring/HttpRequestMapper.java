@@ -25,7 +25,8 @@ class HttpRequestMapper {
 
     URI getDefaultBaseUri(HttpServletRequest request) throws URISyntaxException {
         final URI uri = new URI(request.getRequestURL().toString());
-        return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(), request.getServletPath(), null,
-                null);
+        String path = request.getContextPath() + request.getServletPath();
+
+        return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(), path, null, null);
     }
 }
