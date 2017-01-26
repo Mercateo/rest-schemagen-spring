@@ -40,12 +40,13 @@ public class HttpRequestMapperTest {
     }
 
     @Test
-    public void name() throws Exception {
+    public void shouldBuildCorrectDefaultBaseUri() throws Exception {
         when(request.getRequestURL()).thenReturn(new StringBuffer("http://user:pass@host:8080/foo/bar"));
+        when(request.getContextPath()).thenReturn("/context");
         when(request.getServletPath()).thenReturn("/api");
         final String defaultBaseUri = mapper.getDefaultBaseUri(request).toString();
 
-        assertThat(defaultBaseUri).isEqualTo("http://user:pass@host:8080/api");
+        assertThat(defaultBaseUri).isEqualTo("http://user:pass@host:8080/context/api");
     }
 
     @SafeVarargs
