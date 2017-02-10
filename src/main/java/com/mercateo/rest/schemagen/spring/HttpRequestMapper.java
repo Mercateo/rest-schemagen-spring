@@ -2,6 +2,7 @@ package com.mercateo.rest.schemagen.spring;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;

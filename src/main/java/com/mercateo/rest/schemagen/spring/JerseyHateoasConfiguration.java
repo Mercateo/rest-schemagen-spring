@@ -2,8 +2,6 @@ package com.mercateo.rest.schemagen.spring;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Map;
 
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +21,7 @@ import com.mercateo.common.rest.schemagen.link.LinkFactoryContextDefault;
 import com.mercateo.common.rest.schemagen.link.LinkMetaFactory;
 import com.mercateo.common.rest.schemagen.link.helper.BaseUriCreator;
 import com.mercateo.common.rest.schemagen.link.helper.BaseUriCreatorDefault;
+import com.mercateo.common.rest.schemagen.link.helper.HttpRequestHeaders;
 import com.mercateo.common.rest.schemagen.plugin.FieldCheckerForSchema;
 import com.mercateo.common.rest.schemagen.plugin.MethodCheckerForLink;
 import com.mercateo.common.rest.schemagen.types.HyperSchemaCreator;
@@ -85,20 +84,17 @@ public class JerseyHateoasConfiguration {
     @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
     LinkFactoryContext linkFactoryContext(HttpServletRequest httpServletRequest, BaseUriCreator baseUriCreator,
             FieldCheckerForSchema fieldCheckerForSchema, MethodCheckerForLink methodCheckerForLink,
-            @Named("requestHeaders") Map<String, List<String>> requestHeaders, HttpRequestMapper httpRequestMapper)
-            throws URISyntaxException {
+            HttpRequestMapper httpRequestMapper, HttpRequestHeaders httpRequestHeaders) throws URISyntaxException {
         URI defaultBaseUri = httpRequestMapper.getDefaultBaseUri(httpServletRequest);
-        URI baseUri = baseUriCreator.createBaseUri(defaultBaseUri, requestHeaders);
+        URI baseUri = baseUriCreator.createBaseUri(defaultBaseUri, httpRequestHeaders);
 
         return new LinkFactoryContextDefault(baseUri, methodCheckerForLink, fieldCheckerForSchema);
     }
 
     @Bean
-    @Named("requestHeaders")
     @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-    Map<String, List<String>> requestHeaders(HttpServletRequest httpServletRequest,
-            HttpRequestMapper httpRequestMapper) {
-        return httpRequestMapper.requestHeaders(httpServletRequest);
+    HttpRequestHeaders httpRequestHeaders(HttpServletRequest httpServletRequest, HttpRequestMapper httpRequestMapper) {
+        return new HttpRequestHeaders(httpRequestMapper.requestHeaders(httpServletRequest));
     }
 
     @Bean
