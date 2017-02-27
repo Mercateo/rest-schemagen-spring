@@ -4,7 +4,7 @@
 
     <groupId>com.mercateo.rest</groupId>
     <artifactId>rest-schemagen-spring</artifactId>
-    <version>0.1.14-SNAPSHOT</version>
+    <version>0.1.14</version>
     <packaging>jar</packaging>
 
     <name>rest-schemagen-spring</name>
@@ -53,7 +53,7 @@
         <connection>scm:git:git@github.com:Mercateo/rest-schemagen-spring.git</connection>
         <developerConnection>scm:git:git@github.com:Mercateo/rest-schemagen-spring.git</developerConnection>
         <url>https://github.com/Mercateo/rest-schemagen-spring.git</url>
-        <tag>HEAD</tag>
+        <tag>rest-schemagen-spring-0.1.14</tag>
     </scm>
 
     <properties>
