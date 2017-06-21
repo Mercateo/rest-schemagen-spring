@@ -60,7 +60,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring.version>4.3.7.RELEASE</spring.version>
+        <spring.version>4.3.9.RELEASE</spring.version>
     </properties>
 
     <build>
@@ -147,7 +147,7 @@
         <dependency>
             <groupId>com.mercateo</groupId>
             <artifactId>common.rest.schemagen</artifactId>
-            <version>0.18.5</version>
+            <version>0.18.6</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -180,7 +180,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.6.2</version>
+            <version>3.8.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -192,7 +192,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.2</version>
+            <version>1.2.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
