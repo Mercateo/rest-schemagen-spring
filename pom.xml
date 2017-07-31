@@ -147,7 +147,7 @@
         <dependency>
             <groupId>com.mercateo</groupId>
             <artifactId>common.rest.schemagen</artifactId>
-            <version>0.18.6</version>
+            <version>0.18.7</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
