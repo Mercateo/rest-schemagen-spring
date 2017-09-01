@@ -83,7 +83,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.6.2</version>
                 <configuration>
                     <compilerVersion>1.8</compilerVersion>
                     <source>1.8</source>
@@ -147,7 +147,7 @@
         <dependency>
             <groupId>com.mercateo</groupId>
             <artifactId>common.rest.schemagen</artifactId>
-            <version>0.18.8</version>
+            <version>0.18.9</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -174,7 +174,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>1.10.19</version>
+            <version>2.9.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
