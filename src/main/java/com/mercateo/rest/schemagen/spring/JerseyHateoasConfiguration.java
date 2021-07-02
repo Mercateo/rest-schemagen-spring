@@ -15,19 +15,6 @@
  */
 package com.mercateo.rest.schemagen.spring;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
 import com.mercateo.common.rest.schemagen.JsonHyperSchemaCreator;
 import com.mercateo.common.rest.schemagen.JsonSchemaGenerator;
 import com.mercateo.common.rest.schemagen.RestJsonSchemaGenerator;
@@ -39,10 +26,23 @@ import com.mercateo.common.rest.schemagen.link.helper.BaseUriCreatorDefault;
 import com.mercateo.common.rest.schemagen.link.helper.HttpRequestHeaders;
 import com.mercateo.common.rest.schemagen.plugin.FieldCheckerForSchema;
 import com.mercateo.common.rest.schemagen.plugin.MethodCheckerForLink;
+import com.mercateo.common.rest.schemagen.plugin.TargetSchemaEnablerForLink;
 import com.mercateo.common.rest.schemagen.types.HyperSchemaCreator;
 import com.mercateo.common.rest.schemagen.types.ListResponseBuilderCreator;
 import com.mercateo.common.rest.schemagen.types.ObjectWithSchemaCreator;
 import com.mercateo.common.rest.schemagen.types.PaginatedResponseBuilderCreator;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Configuration
 public class JerseyHateoasConfiguration {
@@ -99,11 +99,12 @@ public class JerseyHateoasConfiguration {
     @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
     LinkFactoryContext linkFactoryContext(HttpServletRequest httpServletRequest, BaseUriCreator baseUriCreator,
             FieldCheckerForSchema fieldCheckerForSchema, MethodCheckerForLink methodCheckerForLink,
-            HttpRequestMapper httpRequestMapper, HttpRequestHeaders httpRequestHeaders) throws URISyntaxException {
+            TargetSchemaEnablerForLink targetSchemaEnablerForLink, HttpRequestMapper httpRequestMapper,
+            HttpRequestHeaders httpRequestHeaders) throws URISyntaxException {
         URI defaultBaseUri = httpRequestMapper.getDefaultBaseUri(httpServletRequest);
         URI baseUri = baseUriCreator.createBaseUri(defaultBaseUri, httpRequestHeaders);
 
-        return new LinkFactoryContextDefault(baseUri, methodCheckerForLink, fieldCheckerForSchema);
+        return new LinkFactoryContextDefault(baseUri, methodCheckerForLink, fieldCheckerForSchema, targetSchemaEnablerForLink);
     }
 
     @Bean
