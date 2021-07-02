@@ -9,7 +9,7 @@
 
     <groupId>com.mercateo.rest</groupId>
     <artifactId>rest-schemagen-spring</artifactId>
-    <version>0.2.2-SNAPSHOT</version>
+    <version>0.2.2</version>
     <packaging>jar</packaging>
 
     <name>rest-schemagen-spring</name>
