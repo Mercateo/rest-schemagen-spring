@@ -17,14 +17,13 @@ package com.mercateo.rest.schemagen.spring;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 class HttpRequestMapper {
     Map<String, List<String>> requestHeaders(HttpServletRequest httpServletRequest) {

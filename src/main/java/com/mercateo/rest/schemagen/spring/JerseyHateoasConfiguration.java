@@ -35,7 +35,7 @@ import com.mercateo.common.rest.schemagen.types.PaginatedResponseBuilderCreator;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
