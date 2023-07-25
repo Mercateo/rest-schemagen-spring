@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2017 Mercateo AG (http://www.mercateo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,14 +17,13 @@ package com.mercateo.rest.schemagen.spring;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 class HttpRequestMapper {
     Map<String, List<String>> requestHeaders(HttpServletRequest httpServletRequest) {
