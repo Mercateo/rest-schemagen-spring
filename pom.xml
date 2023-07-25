@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.mercateo.oss.parent</groupId>
+        <groupId>com.mercateo.oss</groupId>
         <artifactId>oss-parent-pom</artifactId>
-        <version>0.9.0</version>
+        <version>1.0.9</version>
     </parent>
 
     <groupId>com.mercateo.rest</groupId>
@@ -35,19 +35,6 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-    <developers>
-        <developer>
-            <id>andreas_wuerl</id>
-            <name>Andreas Würl</name>
-            <email>andreas.wuerl@mercateo.com</email>
-            <url>http://www.mercateo.com</url>
-            <organization>Mercateo AG</organization>
-            <organizationUrl>http://www.mercateo.com</organizationUrl>
-            <roles>
-                <role>developer</role>
-            </roles>
-        </developer>
-    </developers>
     <licenses>
         <license>
             <name>ASL2</name>

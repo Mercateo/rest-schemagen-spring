@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2017 Mercateo AG (http://www.mercateo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 package com.mercateo.rest.schemagen.spring;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.mercateo.common.rest.schemagen.JsonHyperSchemaCreator;
 import com.mercateo.common.rest.schemagen.JsonSchemaGenerator;
@@ -32,17 +42,7 @@ import com.mercateo.common.rest.schemagen.types.ListResponseBuilderCreator;
 import com.mercateo.common.rest.schemagen.types.ObjectWithSchemaCreator;
 import com.mercateo.common.rest.schemagen.types.PaginatedResponseBuilderCreator;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import jakarta.servlet.http.HttpServletRequest;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Configuration
 public class JerseyHateoasConfiguration {
